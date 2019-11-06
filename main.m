@@ -1,6 +1,7 @@
 pathName = 'E:\Ronald\Databases\LungNodules_SPIE\SPIE-AAPM Lung CT Challenge';
 
 fileNames = generateFileNames(pathName);
+fileNameLocations = readscv('locations.csv')
 numberFiles = length(fileNames);
 
 trainingSet = [];
