@@ -3,14 +3,15 @@ close all;
 
 % initial parameters
 pathBase = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\Training images\';
-nameFile = 'LC001';
-x_center = 120;
-y_center = 325;
-pathFile = [pathBase nameFile '.tiff'];
-pathFileBackground = [pathBase nameFile '_background.tiff'];
-shift = 36;
-x = x_center - shift;
-y = y_center - shift;
+pathFile = [pathBase 'BE001.tiff'];
+pathFileBackground = [pathBase 'BE001_background.tiff'];
+x_center = 405;
+y_center = 268;
+shift = 10;
+x_0 = x_center - 26;
+y_0 = y_center - 26;
+x = x_0 - shift;
+y = y_0 - shift;
 
 I = imread(pathFile);
 C1 = imcrop(I,[x y 51 51]);
