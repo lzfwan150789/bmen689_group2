@@ -1,4 +1,4 @@
-function [descriptors] = getCNBoundary(boundary)
+function [descriptors] = getCNBoundary(img)
     %Thresholding
 thresholding = 0.025:0.075:0.95;
 
@@ -30,7 +30,7 @@ y = pdist(coord,'euclidean');
 CN = squareform(y);
 
 CN = CN ./ max(CN(:));
-
+end
 
 %--------------------------------------------
 function grade = thresholdingCN(cn,thre)
@@ -42,4 +42,5 @@ for x=1:length(thre)
     c = cn < thre(x);
     cnU(c) = 1;
     grade(x,:) = sum(cnU) - 1;
+end
 end
