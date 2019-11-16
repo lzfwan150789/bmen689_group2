@@ -1,11 +1,11 @@
 clear all
-BaseName1 = 'C:/Users/lenovo/Downloads/Lung Training/Boundaries/';
+BaseName1 = 'C:/Users/lenovo/Documents/Github/bmen689_group2/Training images/Renamed Clean Set/Boundaries/';
 BaseName2 = '.tif';
 
-BaseName3 = 'C:/Users/lenovo/Downloads/Lung Training/Floodfill/';
+BaseName3 = 'C:/Users/lenovo/Documents/Github/bmen689_group2/Training images/Renamed Clean Set/Floodfill/';
 BaseName4 = '.tif';
 
-BaseName5 = 'C:/Users/lenovo/Downloads/Lung Training/Interior/';
+BaseName5 = 'C:/Users/lenovo/Documents/Github/bmen689_group2/Training images/Renamed Clean Set/Interior/';
 BaseName6 = '.tif';
 
 
@@ -22,9 +22,9 @@ for i = 1: 10
     interior = imread(FileName3);
     interior = interior(:, :, 1);
     
-    x1 = str2double(Circularity(floodfill));
+    x1 = str2double(Circularity(boundary));
     x2 = Area(floodfill);
-    x3 = Elongation(floodfill);
+    x3 = Elongation(boundary);
     
     s = GLCM(interior);
     y1 = s(1).Energy;
