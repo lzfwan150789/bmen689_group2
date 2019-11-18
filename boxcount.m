@@ -1,4 +1,4 @@
-function [n,r] = boxcount(c,varargin)
+function [n,r,s] = boxcount(c,varargin)
 %BOXCOUNT  Box-Counting of a D-dimensional array (with D=1,2,3).
 %   [N, R] = BOXCOUNT(C), where C is a D-dimensional array (with D=1,2,3),
 %   counts the number N of D-dimensional boxes of size R needed to cover
@@ -156,10 +156,10 @@ r = 2.^(0:p); % box size (1, 2, 4, 8...)
 
 if any(strncmpi(varargin,'slope',1))
     s=-gradient(log(n))./gradient(log(r));
-    semilogx(r, s, 's-');
-    ylim([0 dim]);
-    xlabel('r, box size'); ylabel('- d ln n / d ln r, local dimension');
-    title([num2str(dim) 'D box-count']);
+    %semilogx(r, s, 's-');
+    %ylim([0 dim]);
+    %xlabel('r, box size'); ylabel('- d ln n / d ln r, local dimension');
+    %title([num2str(dim) 'D box-count']);
 elseif nargout==0 || any(strncmpi(varargin,'plot',1))
     loglog(r,n,'s-');
     xlabel('r, box size'); ylabel('n(r), number of boxes');

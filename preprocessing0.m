@@ -20,13 +20,11 @@ BW = imbinarize(C2,level); %generates black n white image - imbinarize is built 
 E = edge(BW, 'canny', [0.2 0.9]); %detects nodule edges from black n white image
 se = strel('disk', 2);
 fillE = imfill(E, 'holes'); %makes interior white
-openE = imopen(fillE,se); %output 1: morph open %removes noise from the flood-filled image
 
 interior = immultiply(C2, openE); 
 
 
 %background
-
 I_background = imread(pathFileBackground);
 C1_background = imcrop(I_background,[x y 51 51]);
 C2_background = imadjust(C1_background); %enhance contrast - imadjust is built in func
@@ -73,6 +71,3 @@ subplot(nrows, ncols,14);
 imshow(closeE);
 suptitle('Original and enhanced images using imadjust hole fill open')
 %montage({C1,E,fillE,interior},'Size',[1 4])
-
-
-
