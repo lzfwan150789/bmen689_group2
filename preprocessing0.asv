@@ -3,15 +3,14 @@ close all;
 
 % initial parameters
 pathBase = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\Training images\';
-pathFile = [pathBase 'BE001.tiff'];
-pathFileBackground = [pathBase 'BE001_background.tiff'];
-x_center = 405;
-y_center = 268;
-shift = 10;
-x_0 = x_center - 26;
-y_0 = y_center - 26;
-x = x_0 - shift;
-y = y_0 - shift;
+nameFile = 'LC001';
+x_center = 120;
+y_center = 325;
+pathFile = [pathBase nameFile '.tiff'];
+pathFileBackground = [pathBase nameFile '_background.tiff'];
+shift = 36;
+x = x_center - shift;
+y = y_center - shift;
 
 I = imread(pathFile);
 C1 = imcrop(I,[x y 51 51]);
@@ -21,7 +20,6 @@ BW = imbinarize(C2,level); %generates black n white image - imbinarize is built 
 E = edge(BW, 'canny', [0.2 0.9]); %detects nodule edges from black n white image
 se = strel('disk', 2);
 fillE = imfill(E, 'holes'); %makes interior white
-openE = imopen(fillE,se); %output 1: morph open %removes noise from the flood-filled image
 
 interior = immultiply(C2, openE); 
 
@@ -74,6 +72,3 @@ subplot(nrows, ncols,14);
 imshow(closeE);
 suptitle('Original and enhanced images using imadjust hole fill open')
 %montage({C1,E,fillE,interior},'Size',[1 4])
-
-
-
