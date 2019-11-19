@@ -1,39 +1,26 @@
 %% Feature extraction generation
-dirPath = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\Training images\Clean Set\'; 
+
+testingCSVInfo = 'testset_paths.csv';
+testingPath = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\Testing images\Masks\'; 
 outputPathTrainingSet = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\trainingSet.csv';
-fileNames = { [dirPath  'BE001-boundary.tif'],
-    [dirPath 'BE002-boundary.tif'],
-    [dirPath 'BE006-boundary.tif'],
-    [dirPath 'BE007-boundary.tif'],
-    [dirPath 'BE010-boundary.tif'],
-    [dirPath 'LC001-boundary.tif'],
-    [dirPath 'LC002-boundary.tif'],
-    [dirPath 'LC003-boundary.tif'],
-    [dirPath 'LC008-boundary.tif'],
-    [dirPath 'LC009-boundary.tif']};
 
+t = readtable(testingCSVInfo);
+labels = t(:, 4);
 
-fileNamesFloodFill = { [dirPath  'BE001-floodfill.tif'],
-    [dirPath 'BE002-floodfill.tif'],
-    [dirPath 'BE006-floodfill.tif'],
-    [dirPath 'BE007-floodfill.tif'],
-    [dirPath 'BE010-floodfill.tif'],
-    [dirPath 'LC001-floodfill.tif'],
-    [dirPath 'LC002-floodfill.tif'],
-    [dirPath 'LC003-floodfill.tif'],
-    [dirPath 'LC008-floodfill.tif'],
-    [dirPath 'LC009-floodfill.tif']};
+numSamples = size(labels,1);
 
-fileNamesInterior = { [dirPath  'BE001-interior.tif'],
-    [dirPath 'BE002-interior.tif'],
-    [dirPath 'BE006-interior.tif'],
-    [dirPath 'BE007-interior.tif'],
-    [dirPath 'BE010-interior.tif'],
-    [dirPath 'LC001-interior.tif'],
-    [dirPath 'LC002-interior.tif'],
-    [dirPath 'LC003-interior.tif'],
-    [dirPath 'LC008-interior.tif'],
-    [dirPath 'LC009-interior.tif']};
+for i = 1:numSamples
+    filename_boundary = [testingPath sprintf('%03d_boundary.tif', i)];
+    filename_interior = [testingPath sprintf('%03d_interior.tif', i)];
+    filename_binarymask = [testingPath sprintf('%03d_floodfill.tif', i)];
+    
+    boundary = imread(filename_boundary);
+    interior = imread(filename_interior);
+    binaryMask = imread(filename_binarymask);
+    
+    
+end
+
 training = [];
 for i = 1:10
     boundary = imread(fileNames{i});

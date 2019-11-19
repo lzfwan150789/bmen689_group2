@@ -8,7 +8,7 @@ x_center = 120;
 y_center = 325;
 pathFile = [pathBase nameFile '.tiff'];
 pathFileBackground = [pathBase nameFile '_background.tiff'];
-shift = 36;
+shift = 20;
 x = x_center - shift;
 y = y_center - shift;
 
