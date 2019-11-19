@@ -31,3 +31,8 @@ for k = 1:length(B)
   Circularity = sprintf('%2.2f',metric);
 
 end
+
+Circularity = str2double(Circularity);
+if (isinf(Circularity))
+   Circularity = 0.01;  
+end
