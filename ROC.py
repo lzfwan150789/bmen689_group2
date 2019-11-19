@@ -4,23 +4,41 @@ import numpy as np
 from numpy import genfromtxt
 from scipy import interp
 import matplotlib.pyplot as plt
-import os
-from sklearn import svm, datasets
+import os	
+from sklearn import svm, datasets, preprocessing
 from sklearn.metrics import roc_curve, auc
 from sklearn.model_selection import StratifiedKFold
+from sklearn.utils import shuffle
+import time
+import datetime
 
 N_SPLITS = 10
 
+
+DPI = 300
+FIG_SIZE = (20, 20)
+
+ts = time.time()
+timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d_%H_%M_%S')
+userName = os.getlogin()
+outputFileName = "C:/Users/" + userName  + r"/Dropbox/PhD/Courses/2019 - C - Fall/BMEN689 - ML and CV in BMEN/Project/prog/results/" + timeStamp + '_10fold.png'
+train_path = "C:/Users/" + userName  + r"/Dropbox/PhD/Courses/2019 - C - Fall/BMEN689 - ML and CV in BMEN/Project/prog/github/bmen689_group2/trainingSet.csv"
+
+
+
 ###############################################################################
 # Data reading
-userName = os.getlogin()
-train_path = "C:/Users/" + userName  + r"/Dropbox/PhD/Courses/2019 - C - Fall/BMEN689 - ML and CV in BMEN/Project/prog/github/bmen689_group2/trainingSet.csv"
 my_data = genfromtxt(train_path, delimiter=',')
 numSamples = my_data.shape[0]
 numFeatures = my_data.shape[1]-1
 
 X = my_data[:,0:numFeatures]
 y = my_data[:,numFeatures]
+
+
+X = preprocessing.scale(X)
+
+X, y = shuffle(X,y)
 
 ###############################################################################
 # Classification and ROC analysis
@@ -44,6 +62,11 @@ for (train, test) in cv.split(X, y):
     plt.plot(fpr, tpr, lw=1, label='ROC fold %d (area = %0.2f)' % (i, roc_auc))
     i = i + 1
 
+
+###############################################################################
+#plot  
+fig_r = plt.figure(1, figsize=FIG_SIZE)
+plt.rcParams["figure.dpi"] = DPI  	
 plt.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6), label='Luck')
 
 mean_tpr /= i-1
@@ -56,4 +79,5 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic example')
 plt.legend(loc="lower right")
-plt.show()
+fig_r.savefig(outputFileName, bbox_inches='tight')
+plt.close()
