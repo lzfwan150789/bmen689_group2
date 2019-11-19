@@ -3,8 +3,8 @@ function [featureVector] = featureExtraction(binaryMask, interior, boundary)
      area = Area(binaryMask);
      glcm = GLCM(interior);
      circularity = str2double(Circularity(boundary));
-     fractalTexture = getFractalTexture(interior);
+     %fractalTexture = getFractalTexture(interior);
      fractalBoundary = getFractalBoundary(boundary);
      cnBoundary = getCNBoundary(boundary);
-     featureVector = [circularity elongation, area, glcm, fractalBoundary,fractalTexture, cnBoundary];
+     featureVector = [circularity elongation, area, glcm, fractalBoundary, cnBoundary];
 end

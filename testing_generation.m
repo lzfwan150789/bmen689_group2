@@ -18,7 +18,13 @@ for i = 1:numSamples
     interior = imread(filename_interior);
     binaryMask = imread(filename_binarymask);
     
+    boundary = im2uint8(boundary);
+    interior = im2uint8(interior);
+    binaryMask = im2uint8(binaryMask);
     
+    imwrite(boundary, filename_boundary);
+    imwrite(interior, filename_interior);
+    imwrite(binaryMask, filename_binarymask);
 end
 
 training = [];
