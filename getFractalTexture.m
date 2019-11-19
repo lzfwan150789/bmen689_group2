@@ -1,4 +1,4 @@
-function [avg, stddev, median, corrcoeff, skew, k, mean_df, std_df] = getFractalTexture(interior)
+function [fractal_texture_features] = getFractalTexture(interior)
     avg = mean2(interior);
     stddev = std2(interior); %2nd moment
     median = medfilt2(interior);
@@ -10,4 +10,7 @@ function [avg, stddev, median, corrcoeff, skew, k, mean_df, std_df] = getFractal
     df = -diff(log(n))./diff(log(r));
     mean_df = mean(df(1:6));
     std_df = std(df(1:6));
+    
+    fractal_texture_features = [avg, stddev, corrcoeff, skew, k, mean_df, std_df];
+
 end
