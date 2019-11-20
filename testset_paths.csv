@@ -70,18 +70,6 @@ x,y,slice,truth,path
 75,288,235,0,LUNGx-CT059\01-08-2007-6789-CT INFUSED CHEST-26028\5-HI RES-62275\0000034.dcm
 371,207,258,0,LUNGx-CT059\01-08-2007-6789-CT INFUSED CHEST-26028\5-HI RES-62275\000304.dcm
 192,298,133,0,LUNGx-CT060\02-20-2007-6367-CT INFUSED CHEST-13719\4-HIGH RES-42551\000035.dcm
-<<<<<<< HEAD
-0,0,0,0,Need_update
-0,0,0,0,Need_update
-0,0,0,0,Need_update
-0,0,0,0,Need_update
-0,0,0,0,Need_update
-0,0,0,1,Need_update
-0,0,0,1,Need_update
-0,0,0,1,Need_update
-0,0,0,1,Need_update
-0,0,0,1,Need_update
-=======
 405,296,169,0,None
 184,268,117,0,None
 449,266,241,0,None
@@ -92,4 +80,3 @@ x,y,slice,truth,path
 375,323,70,1,None
 95,328,65,1,None
 145,299,63,1,None
->>>>>>> master
