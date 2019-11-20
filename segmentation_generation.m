@@ -13,7 +13,7 @@ numSamples = size(X,1);
 training = [];
 
 for i = 1:numSamples
-    if (i >= 40 && i <= 71)
+    if (i >=40 && i <= 71)
         baseFile = [baseFilePath sprintf('%03d.tiff', i)];
         I = imread(baseFile);
         
@@ -31,7 +31,7 @@ for i = 1:numSamples
         se = strel('disk', 2);
         fillE = imfill(E, 'holes');
         openE = imopen(fillE,se);
-        interior = immultiply(C2, openE);
+        interior = immultiply(C1, openE);
         
         binarymask0 = imbinarize(interior);
         binarymask1 = medfilt2(binarymask0);
@@ -42,13 +42,13 @@ for i = 1:numSamples
         f = figure;
         F = getframe(f);
         img = F.cdata;
-        binaryMaskPath = [outputMasksPath sprintf('%03d_boundary.tiff', i)];
-        interiorMaskPath = [outputMasksPath sprintf('%03d_interior.tiff', i)];
-        floodfillMaskPath = [outputMasksPath sprintf('%03d_floodfill.tiff', i)];
+        boundaryMaskPath = [outputMasksPath sprintf('%03d_boundary.tif', i)];
+        interiorMaskPath = [outputMasksPath sprintf('%03d_interior.tif', i)];
+        floodfillMaskPath = [outputMasksPath sprintf('%03d_floodfill.tif', i)];
         
-        imwrite(binarymask1,binaryMaskPath);
         imwrite(interior,interiorMaskPath);
-        imwrite(E, floodfillMaskPath);
+        imwrite(E,boundaryMaskPath);
+        imwrite(binarymask1, floodfillMaskPath);
               
     end
 end
