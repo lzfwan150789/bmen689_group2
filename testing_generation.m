@@ -19,10 +19,8 @@ for i = 1:numSamples
     boundary = imread(filename_boundary);
     interior = imread(filename_interior);
     binaryMask = imread(filename_binarymask);
-    
-    boundary = imbinarize(boundary);
-    boundary = bwmorph(boundary,'skel',Inf);
-    binaryMask = imbinarize(binaryMask);
+   
+    %boundary = bwmorph(boundary,'skel',Inf);
     
     feature_vector = featureExtraction(binaryMask, interior, boundary);
     training = [training ; [feature_vector labels(i)]]; 
