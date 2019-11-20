@@ -1,8 +1,8 @@
 close all
-I = imread('C:/Users/lenovo/Documents/Github/bmen689_group2/Testing images/TIFF/071.tiff');
+I = imread('C:/Users/lenovo/Documents/Github/bmen689_group2/Testing images/TIFF/040.tiff');
 I = I(:, :, 1);
-x = 192-26;
-y = 298-26;
+x = 128-26;
+y = 274-26;
 C1 = imcrop(I,[x y 51 51]);
 C2 = imadjust(C1); %enhance contrast - imadjust is built in func
 level = graythresh(C2); %diff gray levels - used for imbinarize func
@@ -24,7 +24,7 @@ fillE = imfill(E, 'holes'); %makes interior white
 
 openE = imopen(fillE,se); %output 1: morph open %removes noise from the flood-filled image
 
-interior = immultiply(C2, openE); %output 2: interior
+interior = immultiply(C1, openE); %output 2: interior
 % E = edge(openE,'log'); %output 3: edge
 %canny, log, zerocross edge detection works
 %that don't work: roberts, prewitt, sobel, approxcanny
