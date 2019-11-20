@@ -37,6 +37,7 @@ for i = 1:numSamples
         binarymask1 = medfilt2(binarymask0);
         
         imshow(C1);
+        close all
         
         f = figure;
         F = getframe(f);
