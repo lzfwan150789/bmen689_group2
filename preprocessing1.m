@@ -1,8 +1,8 @@
 close all
-I = imread('C:/Users/lenovo/Documents/Github/bmen689_group2/Testing images/TIFF/70.tiff');
+I = imread('C:/Users/lenovo/Documents/Github/bmen689_group2/Testing images/TIFF/071.tiff');
 I = I(:, :, 1);
-x = 371-26;
-y = 207-26;
+x = 192-26;
+y = 298-26;
 C1 = imcrop(I,[x y 51 51]);
 C2 = imadjust(C1); %enhance contrast - imadjust is built in func
 level = graythresh(C2); %diff gray levels - used for imbinarize func

@@ -2,13 +2,13 @@ close all;
 
 
 % initial parameters
-pathBase = 'C:\Users\ronaldjuarez\Dropbox\PhD\Courses\2019 - C - Fall\BMEN689 - ML and CV in BMEN\Project\prog\github\bmen689_group2\Training images\';
-nameFile = 'LC001';
-x_center = 120;
-y_center = 325;
+pathBase = 'C:\Users\lenovo\Documents\Github\bmen689_group2\Testing images\TIFF\';
+nameFile = '071';
+x_center = 192;
+y_center = 298;
 pathFile = [pathBase nameFile '.tiff'];
 pathFileBackground = [pathBase nameFile '_background.tiff'];
-shift = 36;
+shift = 26;
 x = x_center - shift;
 y = y_center - shift;
 
